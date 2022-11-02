@@ -37,7 +37,16 @@ body {
   padding: 48px 32px;
   color: #fff;
   min-width: 600px;
-  min-height: 791px;
+  min-height: 600px;
+  max-height: 600px;
+  overflow: hidden;
+}
+
+.total-list {
+  overflow-y: auto;
+  min-height: 600px;
+  max-height: 600px;
+  padding: 0 8px;
 }
 
 .title {
@@ -140,7 +149,10 @@ body {
   background: linear-gradient(90deg, rgba(214,84,192,1) 0%, rgba(205,23,23,1) 100%);
 }
 
-
+.todo-box-child h2 {
+  max-width: 313px;
+  text-align: left;
+}
 
 .todo-box-child.completed {
   opacity: 0.5;
