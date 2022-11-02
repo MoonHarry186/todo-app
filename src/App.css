@@ -163,3 +163,25 @@ body {
 .todo-box-child.completed h2 {
   text-decoration: line-through;
 }
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    bottom: 0
+  } 
+  to {
+    opacity: 1;
+    bottom: 32px
+  }
+}
+
+.message {
+  position: absolute;
+  right: 32px;
+  bottom: 32;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  animation: messageSlide 0.5s alternate-reverse;
+}
+

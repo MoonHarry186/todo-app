@@ -11,6 +11,9 @@ function TodoForm(props) {
 			props.onSubmit(input)
 			inputRef.current.focus()
 			setInput('')
+			if (!props.editValue) {
+				props.updateMessage('added')
+			}
 		}
 	}
 

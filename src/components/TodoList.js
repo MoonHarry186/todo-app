@@ -1,12 +1,15 @@
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
 import { useState } from "react";
+import Message from "./Message";
 
 function TodoList() {
 
 	const [todoList, setTodoList] = useState(() => {
 		return JSON.parse(localStorage.getItem('jobs')) ?? []
 	})
+
+	const [message, setMessage] = useState('')
 
 	const addTodo = (value) => {
 		setTodoList(prev => {
@@ -44,14 +47,25 @@ function TodoList() {
 		})
 	}
 
+	const updateMessage = messageType => {
+		setMessage(messageType)
+		
+		// message disapears after 3s
+		// setTimeout(() => {setMessage('')}, 3000)
+	}
+
 	return ( 
-		<div className="todo-form">
-			<div>
-				<h1 className="title">Add your work today</h1>
+	<>
+			<div className="todo-form">
+				<div>
+					<h1 className="title">Add your work today</h1>
+				</div>
+				<TodoForm onSubmit={addTodo} updateMessage={updateMessage}/>
+				<Todo todoList={todoList} removeTodo={removeTodo} updateTodo={updateTodo} updateStatus={updateStatus} updateMessage={updateMessage}/>
 			</div>
-			<TodoForm onSubmit={addTodo}/>
-			<Todo todoList={todoList} removeTodo={removeTodo} updateTodo={updateTodo} updateStatus={updateStatus}/>
-		</div>
+			{message && <Message messageType={message}/>}
+	</>
+
 	 );
 }
 
